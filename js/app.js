@@ -38,6 +38,7 @@ myApp.controller('MainCtrl', ['$scope', function($scope) {
                     $scope.players[i].wins  = $scope.players[i].wins  +1;   
                     $scope.players[i].goals  = $scope.players[i].goals  + $scope.game.player1Goals;                       
                     $scope.players[i].conceded  = $scope.players[i].conceded  + $scope.game.player2Goals; 
+                    $scope.players[i].diff  = $scope.players[i].diff + $scope.game.player1Goals  - $scope.game.player2Goals;                     
                     $scope.players[i].points = $scope.players[i].points + 3;                    
                 }
             }
@@ -47,7 +48,8 @@ myApp.controller('MainCtrl', ['$scope', function($scope) {
                 if ($scope.players[i].name == $scope.game.player2) {
                     $scope.players[i].matches  = $scope.players[i].matches  +1;   
                     $scope.players[i].loses  = $scope.players[i].loses  + 1;   
-                    $scope.players[i].goals  = $scope.players[i].goals  + $scope.game.player2Goals;                       
+                    $scope.players[i].goals  = $scope.players[i].goals  + $scope.game.player2Goals;  
+                    $scope.players[i].diff  = $scope.players[i].diff + $scope.game.player2Goals  - $scope.game.player1Goals;                      
                     $scope.players[i].conceded  = $scope.players[i].conceded  + $scope.game.player1Goals;                   
                 }
             }                        
@@ -63,8 +65,8 @@ myApp.controller('MainCtrl', ['$scope', function($scope) {
                     $scope.players[i].matches  = $scope.players[i].matches  +1;   
                     $scope.players[i].draws  = $scope.players[i].draws  +1;   
                     $scope.players[i].goals  = $scope.players[i].goals  + $scope.game.player1Goals;                       
-                    $scope.players[i].conceded  = $scope.players[i].conceded  + $scope.game.player2Goals; 
-                    $scope.players[i].points = $scope.players[i].points + 1;                    
+                    $scope.players[i].conceded  = $scope.players[i].conceded  + $scope.game.player2Goals;                
+                    $scope.players[i].points = $scope.players[i].points + 1;                           
                 }
             }
             
@@ -75,7 +77,8 @@ myApp.controller('MainCtrl', ['$scope', function($scope) {
                     $scope.players[i].draws  = $scope.players[i].draws  + 1;   
                     $scope.players[i].goals  = $scope.players[i].goals  + $scope.game.player2Goals;                       
                     $scope.players[i].conceded  = $scope.players[i].conceded  + $scope.game.player1Goals; 
-                    $scope.players[i].points = $scope.players[i].points + 1;                        
+                    $scope.players[i].diff  = $scope.players[i].diff +  $scope.game.player2Goals - $scope.game.player1Goals ;                    
+                    $scope.players[i].points = $scope.players[i].points + 1;                   
                 }
             }                        
         }
@@ -89,8 +92,9 @@ myApp.controller('MainCtrl', ['$scope', function($scope) {
                 if ($scope.players[i].name == $scope.game.player2) {
                     $scope.players[i].matches  = $scope.players[i].matches  +1;   
                     $scope.players[i].wins  = $scope.players[i].wins  +1;   
-                    $scope.players[i].goals  = $scope.players[i].goals  + $scope.game.player1Goals;                       
-                    $scope.players[i].conceded  = $scope.players[i].conceded  + $scope.game.player2Goals; 
+                    $scope.players[i].goals  = $scope.players[i].goals  + $scope.game.player2Goals;                       
+                    $scope.players[i].conceded  = $scope.players[i].conceded  + $scope.game.player1Goals; 
+                    $scope.players[i].diff  = $scope.players[i].diff + $scope.game.player2Goals  - $scope.game.player1Goals;                    
                     $scope.players[i].points = $scope.players[i].points + 3;                    
                 }
             }
@@ -100,7 +104,8 @@ myApp.controller('MainCtrl', ['$scope', function($scope) {
                 if ($scope.players[i].name == $scope.game.player1) {
                     $scope.players[i].matches  = $scope.players[i].matches  +1;   
                     $scope.players[i].loses  = $scope.players[i].loses  + 1;   
-                    $scope.players[i].goals  = $scope.players[i].goals  + $scope.game.player2Goals;                       
+                    $scope.players[i].goals  = $scope.players[i].goals  + $scope.game.player1Goals;   
+                    $scope.players[i].diff  = $scope.players[i].diff +  $scope.game.player1Goals - $scope.game.player2Goals ;                    
                     $scope.players[i].conceded  = $scope.players[i].conceded  + $scope.game.player1Goals;                   
                 }
             }                                          
@@ -124,5 +129,6 @@ myApp.controller('MainCtrl', ['$scope', function($scope) {
         this.loses = 0;
         this.goals = 0;
         this.conceded= 0;
+        this.diff = 0;
         this.points = 0
     }

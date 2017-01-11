@@ -50,18 +50,20 @@
                 <th>Loses</th>                
                 <th>Goals scored</th>
                 <th>Goals conceded</th>
+                <th>Diff</th>                  
                 <th>Points</th>          
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="player in players | orderBy:['-points','-goals']">
+              <tr ng-repeat="player in players | orderBy:['-points', '-diff','-goals']">
                 <td>{{player.name}}</td>
                 <td>{{player.matches}}</td>            
                 <td>{{player.wins}}</td>
                 <td>{{player.draws}}</td>
                 <td>{{player.loses}}</td>
                 <td>{{player.goals}}</td>
-                <td>{{player.conceded}}</td>    
+                <td>{{player.conceded}}</td>
+                <td>{{player.diff}}</td>                   
                 <th>{{player.points}}</th>               
               </tr>
             </tbody>
