@@ -54,7 +54,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="player in players">
+              <tr ng-repeat="player in players | orderBy:'-points'">
                 <td>{{player.name}}</td>
                 <td>{{player.matches}}</td>            
                 <td>{{player.wins}}</td>
@@ -68,18 +68,35 @@
           </table>            
 
             
-            
         </div>
         <div id="menu2" class="tab-pane fade row">
         <h3>Fixtures</h3>
-                           
+            
+            
+         <table class="table" >
+            <tbody class="col-xs-8 col-xs-offset-2">
+              <tr ng-repeat="game in games">
+                <td class="col-xs-5"> <label for="inlineFormInput"> {{game.player1}} </label></td>
+                <td class="col-xs-1"> <input type="number" class="form-control input-sm" id="inlineFormInput" ng-model="game.player1Goals"> </td>            
+                <td class="col-xs-1"> <input type="number" class="form-control input-sm" id="inlineFormInput" ng-model="game.player2Goals"> </td>
+                <td class="col-xs-5"> <label for="inlineFormInput">{{game.player2}} </label></td>
+                <td class="col-xs-5"> <button type="submit" class="btn btn-primary" ng-click="enterScore(game)">Enter Score</button> </td>                     
+              </tr>
+            </tbody>
+          </table>                
+            
+                 
+            
+        <!--    
         <form class="form-inline" ng-repeat="game in games">
             <label for="inlineFormInput">{{game.player1}}</label>
             <input type="number" class="form-control scoreInput" id="inlineFormInput" ng-model="game.player1Goals"> :
             <input type="number" class="form-control scoreInput" id="inlineFormInput" ng-model="game.player2Goals">              
             <label for="inlineFormInput">{{game.player2}} </label>                    
             <button type="submit" class="btn btn-primary" ng-click="enterScore(game)">Enter Score</button>
-        </form>             
+        </form>
+
+    -->
         </div>
     </div>
 </div>
