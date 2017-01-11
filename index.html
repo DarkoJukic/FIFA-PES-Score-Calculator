@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="LeagueStandingCalculatorApp">
+<head>
+    <meta charset="utf-8">
+    <title>FIFA / PES Score Calculator</title>
+    <meta name="description" content="The HTML5 Herald">
+    <link rel="stylesheet" href="css/style.css">    
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="libraries/angular.min.js"></script>         
+</head>
+
+<body ng-controller="MainCtrl"> 
+    
+<div class="container">
+    <h2>FIFA / PES Score Calculator</h2>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Players</a></li>
+        <li><a data-toggle="tab" href="#menu1">Table</a></li>
+        <li><a data-toggle="tab" href="#menu2">Fixtures</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <h3>Players</h3>
+           
+        <form class="form-inline">
+            <label for="inlineFormInput">Add player: </label>
+            <input type="text" class="form-control" id="inlineFormInput" ng-model="newPlayer.name">
+            <button type="submit" class="btn btn-primary" ng-click="addNewPlayer(newPlayer)">Add</button>
+        </form>       
+        <hr>
+        <div ng-repeat="player in players">
+            {{$index+1}}. {{player.name}}        
+        </div>
+            
+        <button ng-if="players.length > 1" class="btn btn-primary" ng-click="makeTourament(players)">Make tourament</button>            
+        
+                       
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <h3>Table</h3>
+
+         <table class="table" ng-if="touramentMade">
+            <thead>
+              <tr>
+                <th>Player</th>
+                <th>Matches</th>           
+                <th>Wins</th> 
+                <th>Draws</th>            
+                <th>Loses</th>                
+                <th>Goals scored</th>
+                <th>Goals conceded</th>
+                <th>Points</th>          
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="player in players">
+                <td>{{player.name}}</td>
+                <td>{{player.matches}}</td>            
+                <td>{{player.wins}}</td>
+                <td>{{player.draws}}</td>
+                <td>{{player.loses}}</td>
+                <td>{{player.goals}}</td>
+                <td>{{player.conceded}}</td>    
+                <th>{{player.points}}</th>               
+              </tr>
+            </tbody>
+          </table>            
+
+            
+            
+        </div>
+        <div id="menu2" class="tab-pane fade row">
+        <h3>Fixtures</h3>
+                           
+        <form class="form-inline" ng-repeat="game in games">
+            <label for="inlineFormInput">{{game.player1}}</label>
+            <input type="number" class="form-control scoreInput" id="inlineFormInput" ng-model="game.player1Goals"> :
+            <input type="number" class="form-control scoreInput" id="inlineFormInput" ng-model="game.player2Goals">              
+            <label for="inlineFormInput">{{game.player2}} </label>                    
+            <button type="submit" class="btn btn-primary" ng-click="enterScore(game)">Enter Score</button>
+        </form>             
+        </div>
+    </div>
+</div>
+    
+    <script src="libraries/jquery.min.js"></script>      
+    <script src="libraries/tab.js"></script>   
+    <script src="js/app.js"></script> 
+</body>
+</html>
