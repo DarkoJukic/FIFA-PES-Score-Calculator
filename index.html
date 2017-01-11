@@ -19,28 +19,31 @@
         <li><a data-toggle="tab" href="#menu2">Fixtures</a></li>
     </ul>
 
-    <div class="tab-content">
+
+    <div class="tab-content row">
         <div id="home" class="tab-pane fade in active">
             <h3>Players</h3>
-           
-        <form class="form-inline">
-            <label for="inlineFormInput">Add player: </label>
-            <input type="text" class="form-control" id="inlineFormInput" ng-model="newPlayer.name">
-            <button type="submit" class="btn btn-primary" ng-click="addNewPlayer(newPlayer)">Add</button>
-        </form>       
-        <hr>
-        <div ng-repeat="player in players">
-            {{$index+1}}. {{player.name}}        
-        </div>
             
-        <button ng-if="players.length > 1" class="btn btn-primary" ng-click="makeTourament(players)">Make tourament</button>            
-        
-                       
+            <div class="col-xs-10 col-xs-offset-1">
+                <form class="form-inline">
+                    <label for="inlineFormInput">Add player: </label>
+                    <input type="text" class="form-control" id="inlineFormInput" ng-model="newPlayer.name">
+                    <button type="submit" class="btn btn-primary" ng-click="addNewPlayer(newPlayer)">Add</button>
+                </form>       
+                <hr>
+                <div ng-repeat="player in players">
+                    {{$index+1}}. {{player.name}}        
+                </div>      
+                <button ng-if="players.length > 1" class="btn btn-primary" ng-click="makeTourament(players)">Make tourament</button>              
+            </div>                    
         </div>
-        <div id="menu1" class="tab-pane fade">
-            <h3>Table</h3>
+        
+        <div id="menu1" class="tab-pane fade row">
+            <h3 class="col-xs-12">Table</h3>
+            
 
-         <table class="table" ng-if="touramentMade">
+            <div class="col-xs-10 col-xs-offset-1">
+         <table class="table" ng-if="touramentMade" >
             <thead>
               <tr>
                 <th>Player</th>
@@ -48,9 +51,9 @@
                 <th>Wins</th> 
                 <th>Draws</th>            
                 <th>Loses</th>                
-                <th>Goals scored</th>
-                <th>Goals conceded</th>
-                <th>Diff</th>                  
+                <th>+</th>
+                <th>-</th>
+                <th>+/-</th>                  
                 <th>Points</th>          
               </tr>
             </thead>
@@ -67,18 +70,20 @@
                 <th>{{player.points}}</th>               
               </tr>
             </tbody>
-          </table>            
+          </table>             
+            </div>
+           
 
             
         </div>
         <div id="menu2" class="tab-pane fade row">
-        <h3>Fixtures</h3>
+        <h3 class="col-xs-12 pull-right">Fixtures</h3>
             
             
          <table class="table" >
-            <tbody class="col-xs-8 col-xs-offset-2">
+            <tbody class="col-xs-10 col-xs-offset-1">
               <tr ng-repeat="game in games">
-                <td class="col-xs-5"> <label for="inlineFormInput"> {{game.player1}} </label></td>
+                <td class="col-xs-5"> <label for="inlineFormInput" class="pull-right"> {{game.player1}} </label></td>
                 <td class="col-xs-1"> <input type="number" class="form-control input-sm" id="inlineFormInput" ng-model="game.player1Goals"> </td>            
                 <td class="col-xs-1"> <input type="number" class="form-control input-sm" id="inlineFormInput" ng-model="game.player2Goals"> </td>
                 <td class="col-xs-5"> <label for="inlineFormInput">{{game.player2}} </label></td>
