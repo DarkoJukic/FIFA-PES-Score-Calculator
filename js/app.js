@@ -28,6 +28,7 @@ myApp.controller('MainCtrl', ['$scope', function($scope) {
      
     $scope.enterScore = function (game) {
         $scope.game = game;
+        $scope.game.played = true;        
         if ($scope.game.player1Goals > $scope.game.player2Goals) {
             console.log("player 1 wins");
             
@@ -118,7 +119,8 @@ myApp.controller('MainCtrl', ['$scope', function($scope) {
         this.player1 = homePlayer;
         this.player2 = awayPlayer;
         this.player1Goals = 0;
-        this.player2Goals= 0
+        this.player2Goals= 0;
+        this.played = false
     }
 
     function Player() {

@@ -31,10 +31,12 @@
                     <button type="submit" class="btn btn-primary" ng-click="addNewPlayer(newPlayer)">Add</button>
                 </form>       
                 <hr>
-                <div ng-repeat="player in players">
-                    {{$index+1}}. {{player.name}}        
+                <div ng-cloak>
+                    <div ng-repeat="player in players" >
+                        {{$index+1}}. {{player.name}}        
+                    </div>      
+                    <button ng-if="players.length > 1" class="btn btn-primary" ng-click="makeTourament(players)">Make tourament</button>                 
                 </div>      
-                <button ng-if="players.length > 1" class="btn btn-primary" ng-click="makeTourament(players)">Make tourament</button>              
             </div>                    
         </div>
         
@@ -77,33 +79,24 @@
             
         </div>
         <div id="menu2" class="tab-pane fade row">
-        <h3 class="col-xs-12 pull-right">Fixtures</h3>
-            
-            
-         <table class="table" >
+        <h3 class="col-xs-12 pull-right">Fixtures</h3>                      
+         <table class="table">
             <tbody class="col-xs-10 col-xs-offset-1">
               <tr ng-repeat="game in games">
                 <td class="col-xs-5"> <label for="inlineFormInput" class="pull-right"> {{game.player1}} </label></td>
-                <td class="col-xs-1"> <input type="number" class="form-control input-sm" id="inlineFormInput" ng-model="game.player1Goals"> </td>            
-                <td class="col-xs-1"> <input type="number" class="form-control input-sm" id="inlineFormInput" ng-model="game.player2Goals"> </td>
+                <td class="col-xs-1"> 
+                    <input ng-if="!game.played" type="number" class="form-control input-sm" id="inlineFormInput" ng-model="game.player1Goals">
+                    <strong ng-if="game.played" class="pull-right">{{game.player1Goals}}&nbsp;&nbsp; :</strong>
+                </td>            
+                <td class="col-xs-1">
+                    <input ng-if="!game.played" type="number" class="form-control input-sm" id="inlineFormInput" ng-model="game.player2Goals">
+                    <strong ng-if="game.played" class="pull-left">{{game.player2Goals}}</strong>
+                </td>                   
                 <td class="col-xs-5"> <label for="inlineFormInput">{{game.player2}} </label></td>
-                <td class="col-xs-5"> <button type="submit" class="btn btn-primary" ng-click="enterScore(game)">Enter Score</button> </td>                     
+                <td class="col-xs-5"> <button ng-if="!game.played" type="submit" class="btn btn-primary" ng-click="enterScore(game)">Enter Score</button> </td>                     
               </tr>
             </tbody>
-          </table>                
-            
-                 
-            
-        <!--    
-        <form class="form-inline" ng-repeat="game in games">
-            <label for="inlineFormInput">{{game.player1}}</label>
-            <input type="number" class="form-control scoreInput" id="inlineFormInput" ng-model="game.player1Goals"> :
-            <input type="number" class="form-control scoreInput" id="inlineFormInput" ng-model="game.player2Goals">              
-            <label for="inlineFormInput">{{game.player2}} </label>                    
-            <button type="submit" class="btn btn-primary" ng-click="enterScore(game)">Enter Score</button>
-        </form>
-
-    -->
+          </table>                         
         </div>
     </div>
 </div>
