@@ -11,6 +11,11 @@ myApp.controller('MainCtrl', ['$scope', function($scope) {
         $scope.newPlayer = new Player();        
     }
     
+    $scope.removePlayer = function (index) {
+        $scope.players.splice(index, 1);     
+    }    
+    
+    
      $scope.makeTourament = function (players) {
          $scope.touramentMade = true;
          toastr["success"]("League created!");         

@@ -33,7 +33,14 @@
                 <hr>
                 <div ng-cloak class="row col-xs-8 col-xs-offset-1">
                     <div ng-repeat="player in players">
-                        {{$index+1}}. {{player.name}}        
+                        <table>
+                            <tb>
+                                <tr>
+                                    <td class="col-xs-10">{{$index+1}}. {{player.name}}   </td>
+                                    <td class="col-xs-2"><button class="btn btn-xs btn-danger" ng-click="removePlayer($index)">x</button></td>
+                                </tr>
+                            </tb>
+                        </table>  
                     </div> 
                     <br>
                     <button ng-if="players.length > 2" class="btn btn-primary" ng-click="makeTourament(players)">Create League</button>   
