@@ -12,7 +12,8 @@ myApp.controller('MainCtrl', ['$scope', function($scope) {
     }
     
      $scope.makeTourament = function (players) {
-         $scope.touramentMade = true;       
+         $scope.touramentMade = true;
+         toastr["success"]("League created!");         
          $scope.games = [];        
          for (var i=0; i<$scope.players.length; i++) {
              for (var j=0; j<$scope.players.length; j++) {
@@ -28,7 +29,8 @@ myApp.controller('MainCtrl', ['$scope', function($scope) {
      
     $scope.enterScore = function (game) {
         $scope.game = game;
-        $scope.game.played = true;        
+        $scope.game.played = true;
+         toastr["success"]("Score added!");           
         if ($scope.game.player1Goals > $scope.game.player2Goals) {
             console.log("player 1 wins");
             
@@ -115,9 +117,9 @@ myApp.controller('MainCtrl', ['$scope', function($scope) {
     
 }]);
 
-    function Game(homePlayer, awayPlayer) {
-        this.player1 = homePlayer;
-        this.player2 = awayPlayer;
+    function Game(player1, player2) {
+        this.player1 = player1;
+        this.player2 = player2;
         this.player1Goals = 0;
         this.player2Goals= 0;
         this.played = false
