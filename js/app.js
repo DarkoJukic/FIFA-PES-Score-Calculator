@@ -114,7 +114,7 @@ myApp.controller('MainCtrl', ['$scope', function($scope) {
                     $scope.players[i].loses  = $scope.players[i].loses  + 1;   
                     $scope.players[i].goals  = $scope.players[i].goals  + $scope.game.player1Goals;   
                     $scope.players[i].diff  = $scope.players[i].diff +  $scope.game.player1Goals - $scope.game.player2Goals ;                    
-                    $scope.players[i].conceded  = $scope.players[i].conceded  + $scope.game.player1Goals;                   
+                    $scope.players[i].conceded  = $scope.players[i].conceded  + $scope.game.player2Goals;                   
                 }
             }                                          
         }               
