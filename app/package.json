@@ -1,0 +1,14 @@
+{
+  "name": "lsc",
+  "version": "1.0.0",
+  "description": "Application for calculating league standing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Darko Jukic",
+  "license": "ISC",
+  "dependencies": {
+
+  }
+}

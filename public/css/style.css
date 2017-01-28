@@ -1,0 +1,36 @@
+body {
+  background-image: url("../img/grass.jpg");
+}
+
+body > * {
+    color: white;
+}
+
+.container {
+    background-color: #191a1c;
+    min-height: 100vh;
+
+}
+
+.scoreInput {
+    width: 4%!important;
+}
+
+.matchEndedClass {
+    background: green;
+}
+
+.center {
+    margin: auto;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #337AB7!important;
+}
